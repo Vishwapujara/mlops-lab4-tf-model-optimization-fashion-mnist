@@ -1,0 +1,25 @@
+{
+  "baseline_float32": {
+    "accuracy": 0.8929,
+    "size_kb": 883.5,
+    "gzip_kb": 817.0,
+    "latency_ms": 0.025
+  },
+  "budget": {
+    "max_accuracy_drop_pp": 1.0,
+    "max_class_drop_pp": 3.0
+  },
+  "recommended": {
+    "variant": "qat (int8)",
+    "accuracy": 0.9039,
+    "accuracy_drop_pp": 0.25,
+    "worst_class": "Shirt",
+    "worst_class_drop_pp": 1.5,
+    "gzip_kb": 176.6,
+    "gzip_reduction_x": 4.6,
+    "speedup_x": 1.2
+  },
+  "variants": 16,
+  "quick": false,
+  "runtime_s": 144
+}

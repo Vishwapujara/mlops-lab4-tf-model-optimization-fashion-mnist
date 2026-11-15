@@ -1,0 +1,29 @@
+# Experiment settings for run_experiments.py
+
+seed: 42
+epochs: 5                 # baseline training
+finetune_epochs: 2        # every compression technique gets exactly this much extra training...
+finetune_lr: 0.0001       # ...at this learning rate, starting from the same trained baseline
+batch_size: 128
+
+pruning:
+  schedules: [polynomial, constant]
+  targets: [0.5, 0.75, 0.9]
+  chain_sparsity: 0.75    # sparsity of the pruned model fed into the prune -> cluster -> QAT chains
+
+clusters: 16              # shared weight values per layer for weight clustering
+latency_runs: 200         # single-image timings per model (median is reported)
+
+# Deployment budget used to pick the recommended model
+budget:
+  max_accuracy_drop_pp: 1.0   # at most 1 percentage point below the float32 baseline overall
+  max_class_drop_pp: 3.0      # and at most 3 points on any single class
+
+# --quick: tiny run for smoke tests and CI (about a minute)
+quick:
+  train_limit: 3000
+  test_limit: 1000
+  epochs: 1
+  finetune_epochs: 1
+  targets: [0.5]
+  latency_runs: 20
